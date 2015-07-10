@@ -1,44 +1,125 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" >
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <!--web-fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--web-fonts -->
+    @Scripts.Render("~/Scripts/jquery.min.js")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+    <div class="container">
+        <div class="wrap">
+            <div class="header">
+                <header id="topnav">
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="#home" class="scroll">Home</a></li>
+                            <li><a href="#services" class="scroll">Services</a></li>
+                            <li><a href="#clients" class="scroll">Clients</a></li>
+                            <li><a href="#team" class="scroll">Team</a></li>
+                            <li><a href="#contact" class="scroll">Contact</a></li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </nav>
+                    
+                    <h1><a href="index.html"><img src="@Url.Content("~/Content/Images/logo.png")" alt=""></a></h1>
+                    <a href="#" id="navbtn">Nav Menu</a>
+                    <div class="clear"> </div>
+                </header>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <!-----script------------->
+            @Scripts.Render("~/Scripts/menu.js")
+           
+
+            <div class="slider" id="home">
+
+                <div class="wrap">
+                    <!---start-da-slider----->
+                    <div id="da-slider" class="da-slider">
+                        <div class="da-slide">
+                            <p>Can you build the Website of my dreams?</p>
+                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                            <a href="#" class="da-link">Learn More</a>
+                        </div>
+                        <div class="da-slide">
+                            <p>Can you build the Website of my dreams?</p>
+                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                            <a href="#" class="da-link">Learn More</a>
+                        </div>
+                        <div class="da-slide">
+                            <p>Can you build the Website of my dreams?</p>
+                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                            <a href="#" class="da-link">Learn More</a>
+
+                        </div>
+                        <div class="da-slide">
+                            <p>Can you build the Website of my dreams?</p>
+                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                            <a href="#" class="da-link">Learn More</a>
+
+                        </div>
+                    </div>
+
+                    @Scripts.Render("~/Scripts/jquery.cslider.js")
+                    
+                    <!---strat-slider---->
+                    @Styles.Render("~/Content/slider.css")
+                    @Scripts.Render("~/Scripts/modernizr.custom.28468.js")
+                  
+                    <script type="text/javascript">
+                        $(function () {
+
+                            $('#da-slider').cslider({
+                                autoplay: true,
+                                bgincrement: 450
+                            });
+
+                        });
+                    </script>
+                    <!---//End-da-slider----->
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+     @RenderBody()
+   
+    <!-- scroll_top_btn -->
+    @Scripts.Render("~/Scripts/move-top.js")
+    @Scripts.Render("~/Scripts/easing.js")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+
+    <!---smoth-scrlling---->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+            });
+        });
+    </script>
+
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+   
 </body>
 </html>
