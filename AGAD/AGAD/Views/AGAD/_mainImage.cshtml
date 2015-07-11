@@ -1,0 +1,73 @@
+﻿<div class="container container-mainpage">
+    <div class="wrap">
+        <div class="header">
+            <header id="topnav">
+                <nav>
+                    <ul>
+                        <li><a href="#services" class="scroll">Bildirim Yap</a></li>
+                        <li><a href="#clients" class="scroll">En Son Dogal Afetler</a></li>
+                        <li><a href="#team" class="scroll">Yetkili Kişiler</a></li>
+                        <li><a href="#contact" class="scroll">İletişim</a></li>
+                        <li><a href="/admin">Yönetici Girişi</a></li>
+                        <div class="clear"> </div>
+                    </ul>
+                </nav>
+
+                <h1><a href="index.html"><img src="@Url.Content("~/Content/Images/logo.png")" alt=""></a></h1>
+                <a href="#" id="navbtn">Nav Menu</a>
+                <div class="clear"> </div>
+            </header>
+        </div>
+        <!-----script------------->
+        @Scripts.Render("~/Scripts/menu.js")
+        <div class="slider" id="home">
+
+            <div class="wrap">
+                <!---start-da-slider----->
+                <div id="da-slider" class="da-slider">
+                    <div class="da-slide">
+                        <p>Can you build the Website of my dreams?</p>
+                        <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                        <a href="#" class="da-link">Learn More</a>
+                    </div>
+                    <div class="da-slide">
+                        <p>Can you build the Website of my dreams?</p>
+                        <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                        <a href="#" class="da-link">Learn More</a>
+                    </div>
+                    <div class="da-slide">
+                        <p>Can you build the Website of my dreams?</p>
+                        <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                        <a href="#" class="da-link">Learn More</a>
+
+                    </div>
+                    <div class="da-slide">
+                        <p>Can you build the Website of my dreams?</p>
+                        <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
+                        <a href="#" class="da-link">Learn More</a>
+
+                    </div>
+                </div>
+
+                @Scripts.Render("~/Scripts/jquery.cslider.js")
+
+                <!---strat-slider---->
+                @Styles.Render("~/Content/slider.css")
+                @Scripts.Render("~/Scripts/modernizr.custom.28468.js")
+
+                <script type="text/javascript">
+                    $(function () {
+
+                        $('#da-slider').cslider({
+                            autoplay: true,
+                            bgincrement: 450
+                        });
+
+                    });
+                </script>
+                <!---//End-da-slider----->
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -14,14 +14,6 @@ namespace AGAD.Models.Mapping
             this.Property(t => t.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.IL)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            this.Property(t => t.ILCESEMT)
-                .IsRequired()
-                .HasMaxLength(50);
-
             this.Property(t => t.KOY)
                 .HasMaxLength(50);
 
@@ -65,14 +57,21 @@ namespace AGAD.Models.Mapping
             this.Property(t => t.IMAGEPATH).HasColumnName("IMAGEPATH");
             this.Property(t => t.CONFIRMSTATEID).HasColumnName("CONFIRMSTATEID");
             this.Property(t => t.CONFIRMCOMMENT).HasColumnName("CONFIRMCOMMENT");
+            this.Property(t => t.USER_ID).HasColumnName("USER_ID");
 
             // Relationships
             this.HasRequired(t => t.AGADTYPE1)
                 .WithMany(t => t.AGADs)
                 .HasForeignKey(d => d.AGADTYPE);
+            this.HasRequired(t => t.CITY)
+                .WithMany(t => t.AGADs)
+                .HasForeignKey(d => d.IL);
             this.HasRequired(t => t.CONFIRMSTATE)
                 .WithMany(t => t.AGADs)
                 .HasForeignKey(d => d.CONFIRMSTATEID);
+            this.HasRequired(t => t.TOWN)
+                .WithMany(t => t.AGADs)
+                .HasForeignKey(d => d.ILCESEMT);
 
         }
     }

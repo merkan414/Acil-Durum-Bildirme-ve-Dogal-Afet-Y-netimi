@@ -10,83 +10,11 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--web-fonts -->
     @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/jquery.easing.1.3.js")
 </head>
 <body>
-    <div class="container">
-        <div class="wrap">
-            <div class="header">
-                <header id="topnav">
-                    <nav>
-                        <ul>
-                            <li class="active"><a href="#home" class="scroll">Home</a></li>
-                            <li><a href="#services" class="scroll">Services</a></li>
-                            <li><a href="#clients" class="scroll">Clients</a></li>
-                            <li><a href="#team" class="scroll">Team</a></li>
-                            <li><a href="#contact" class="scroll">Contact</a></li>
-                            <div class="clear"> </div>
-                        </ul>
-                    </nav>
-                    
-                    <h1><a href="index.html"><img src="@Url.Content("~/Content/Images/logo.png")" alt=""></a></h1>
-                    <a href="#" id="navbtn">Nav Menu</a>
-                    <div class="clear"> </div>
-                </header>
-            </div>
-            <!-----script------------->
-            @Scripts.Render("~/Scripts/menu.js")
-           
-
-            <div class="slider" id="home">
-
-                <div class="wrap">
-                    <!---start-da-slider----->
-                    <div id="da-slider" class="da-slider">
-                        <div class="da-slide">
-                            <p>Can you build the Website of my dreams?</p>
-                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
-                            <a href="#" class="da-link">Learn More</a>
-                        </div>
-                        <div class="da-slide">
-                            <p>Can you build the Website of my dreams?</p>
-                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
-                            <a href="#" class="da-link">Learn More</a>
-                        </div>
-                        <div class="da-slide">
-                            <p>Can you build the Website of my dreams?</p>
-                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
-                            <a href="#" class="da-link">Learn More</a>
-
-                        </div>
-                        <div class="da-slide">
-                            <p>Can you build the Website of my dreams?</p>
-                            <h2>Yup<img src="@Url.Content("~/Content/Images/coma.png")" alt=""> we can do that<img src="@Url.Content("~/Content/Images/dot.png")" alt=""></h2>
-                            <a href="#" class="da-link">Learn More</a>
-
-                        </div>
-                    </div>
-
-                    @Scripts.Render("~/Scripts/jquery.cslider.js")
-                    
-                    <!---strat-slider---->
-                    @Styles.Render("~/Content/slider.css")
-                    @Scripts.Render("~/Scripts/modernizr.custom.28468.js")
-                  
-                    <script type="text/javascript">
-                        $(function () {
-
-                            $('#da-slider').cslider({
-                                autoplay: true,
-                                bgincrement: 450
-                            });
-
-                        });
-                    </script>
-                    <!---//End-da-slider----->
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
+     @Html.Partial("~/Views/AGAD/_mainImage.cshtml")
      @RenderBody()
    
     <!-- scroll_top_btn -->
@@ -112,6 +40,7 @@
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
+                debugger;
                 event.preventDefault();
                 $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
             });
@@ -119,7 +48,11 @@
     </script>
 
     <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
-
-   
+    @Scripts.Render("~/Content/plupload-2.1.7/js/plupload.full.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
+    @Scripts.Render("~/Content/plupload-2.1.7/js/jquery.ui.plupload/jquery.ui.plupload.min.js")
+    @Scripts.Render("~/Content/plupload-2.1.7/js/i18n/tr.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    
 </body>
 </html>

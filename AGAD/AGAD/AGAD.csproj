@@ -168,31 +168,136 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507111801588_cities.cs" />
+    <Compile Include="Migrations\201507111801588_cities.Designer.cs">
+      <DependentUpon>201507111801588_cities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AGAD.cs" />
     <Compile Include="Models\agadContext.cs" />
     <Compile Include="Models\AGADTYPE.cs" />
+    <Compile Include="Models\CITY.cs" />
     <Compile Include="Models\CONFIRMSTATE.cs" />
     <Compile Include="Models\Mapping\AGADMap.cs" />
     <Compile Include="Models\Mapping\AGADTYPEMap.cs" />
+    <Compile Include="Models\Mapping\CITYMap.cs" />
     <Compile Include="Models\Mapping\CONFIRMSTATEMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TOWNMap.cs" />
     <Compile Include="Models\Mapping\USERMap.cs" />
+    <Compile Include="Models\Seed\CitySeeder.cs" />
     <Compile Include="Models\STATESENUM.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TOWN.cs" />
     <Compile Include="Models\USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Database Script.sql" />
+    <Content Include="Content\adminstyle.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\adminbg.jpg" />
+    <Content Include="Content\Images\adminortakguc.gif" />
+    <Content Include="Content\Images\bg1.png" />
     <Content Include="Content\Images\bg2.png" />
     <Content Include="Content\Images\img1.png" />
     <Content Include="Content\Images\img2.png" />
     <Content Include="Content\Images\img3.png" />
     <Content Include="Content\Images\img4.png" />
     <Content Include="Content\Images\img5.png" />
+    <Content Include="Content\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\plupload-2.1.7\examples\custom.html" />
+    <Content Include="Content\plupload-2.1.7\examples\events.html" />
+    <Content Include="Content\plupload-2.1.7\examples\jquery\all_runtimes.html" />
+    <Content Include="Content\plupload-2.1.7\examples\jquery\jquery_ui_widget.html" />
+    <Content Include="Content\plupload-2.1.7\examples\jquery\queue_widget.html" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ar.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\az.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\bg.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\bs.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ca.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\cs.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\cy.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\da.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\de.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\el.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\en.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\es.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\et.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\fa.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\fi.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\fr.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\he.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\hr.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\hu.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\hy.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\id.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\it.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ja.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ka.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\kk.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\km.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ko.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ku_IQ.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\lt.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\lv.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\mn.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ms.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\nl.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\pl.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\pt_BR.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ro.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\ru.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\sk.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\sq.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\sr.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\sr_RS.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\sv.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\th_TH.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\tr.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\uk_UA.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\vi.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\zh_CN.js" />
+    <Content Include="Content\plupload-2.1.7\js\i18n\zh_TW.js" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\done.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\error.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="Content\plupload-2.1.7\js\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="Content\plupload-2.1.7\js\moxie.js" />
+    <Content Include="Content\plupload-2.1.7\js\moxie.min.js" />
+    <Content Include="Content\plupload-2.1.7\js\Moxie.swf" />
+    <Content Include="Content\plupload-2.1.7\js\Moxie.xap" />
+    <Content Include="Content\plupload-2.1.7\js\plupload.dev.js" />
+    <Content Include="Content\plupload-2.1.7\js\plupload.full.min.js" />
+    <Content Include="Content\plupload-2.1.7\js\plupload.min.js" />
+    <Content Include="Content\plupload-2.1.7\license.txt" />
     <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style404.css" />
@@ -242,11 +347,19 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Images\icon-p.psd" />
+    <Content Include="Content\plupload-2.1.7\examples\dump.php" />
+    <Content Include="Content\plupload-2.1.7\examples\jquery\s3.php" />
+    <Content Include="Content\plupload-2.1.7\examples\upload.php" />
+    <Content Include="Content\plupload-2.1.7\readme.md" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.cslider.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jquery.flexisel.js" />
@@ -259,6 +372,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr.custom.28468.js" />
     <Content Include="Scripts\move-top.js" />
+    <Content Include="Scripts\prefixfree.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -275,20 +389,36 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\AGAD\Index.cshtml" />
     <Content Include="Views\Shared\error.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
-    <Content Include="Views\ADMIN\_login.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutTemplate.cshtml" />
+    <Content Include="Views\ADMIN\getList.cshtml" />
+    <Content Include="Views\ADMIN\_detailAGAD.cshtml" />
+    <Content Include="Views\AGAD\_bildirim.cshtml" />
+    <Content Include="Views\AGAD\_mainImage.cshtml" />
+    <Content Include="Views\AGAD\_disasterList.cshtml" />
+    <Content Include="Views\AGAD\_authorityPersonals.cshtml" />
+    <Content Include="Views\AGAD\_contact.cshtml" />
+    <Content Include="Views\AGAD\_communityLinks.cshtml" />
+    <Content Include="Views\ADMIN\_header.cshtml" />
+    <Content Include="Views\ADMIN\_footer.cshtml" />
+    <Content Include="Views\ADMIN\_login.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507111801588_cities.resx">
+      <DependentUpon>201507111801588_cities.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,17 +1,72 @@
-﻿
+﻿@model AGAD.Models.USER
 @{
-    Layout = null;
+    ViewBag.Title = "_login";
+    Layout = "~/Views/Shared/_AdminLayoutTemplate.cshtml";
 }
 
-<!DOCTYPE html>
+<div style="margin:0 auto">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_login</title>
-</head>
-<body>
-    <div> 
+
+
+    <div class="contact">
+        <div class="form">
+            <form method="post" action="#">
+                <input type="text" class="textbox" value="Your Email*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email*';}">
+                <div class="clear"> </div>
+                <div>
+                    <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Message* ';}">Your Message*</textarea>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Sign in " />
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+    @*@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+
+        @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+                                    @Html.ValidationSummary(true)
+        if (@ViewBag.Message != null)
+        {
+            <div style="border:1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+
+        <div style="width:50%;margin:0 auto">
+            <div class="row">
+                @Html.LabelFor(user => user.EMAIL, new { @class = "col-md-1" })
+                @Html.TextBoxFor(user => user.EMAIL, new { @class = "col-md-10 col-md-offset-1" })
+                @Html.ValidationMessageFor(a => a.EMAIL)
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.EMAIL)</td>
+                <td>@Html.TextBoxFor(a => a.EMAIL)</td>
+                <td>@Html.ValidationMessageFor(a => a.EMAIL)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(a => a.PASS)
+                </td>
+                <td>
+                    @Html.PasswordFor(a => a.PASS)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.PASS)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    }*@
+
+</div>

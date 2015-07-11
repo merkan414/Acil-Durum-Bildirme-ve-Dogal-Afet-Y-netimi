@@ -10,8 +10,8 @@ namespace AGAD.Models
         public System.DateTime STARTDATE { get; set; }
         public System.DateTime ENDDATE { get; set; }
         public int TIME { get; set; }
-        public string IL { get; set; }
-        public string ILCESEMT { get; set; }
+        public int IL { get; set; }
+        public int ILCESEMT { get; set; }
         public string KOY { get; set; }
         public string MAHALLE { get; set; }
         public string BELDEMEVKI { get; set; }
@@ -22,7 +22,10 @@ namespace AGAD.Models
         public string IMAGEPATH { get; set; }
         public int CONFIRMSTATEID { get; set; }
         public string CONFIRMCOMMENT { get; set; }
+        public Nullable<int> USER_ID { get; set; }
         public virtual AGADTYPE AGADTYPE1 { get; set; }
+        public virtual CITY CITY { get; set; }
         public virtual CONFIRMSTATE CONFIRMSTATE { get; set; }
+        public virtual TOWN TOWN { get; set; }
     }
 }

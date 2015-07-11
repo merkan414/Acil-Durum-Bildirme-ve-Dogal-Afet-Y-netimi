@@ -11,13 +11,16 @@ namespace AGAD
             
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                                        "~/Scripts/jquery.validate*"));
 
             
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/jquery-ui.css",
                       "~/Content/style.css",
-                      "~/Content/slimmenu.css"));
+                      "~/Content/slimmenu.css",
+                      "~/Content/plupload-2.1.7/js/jquery.ui.plupload/css/jquery.ui.plupload.css"
+                      ));
         }
     }
 }
