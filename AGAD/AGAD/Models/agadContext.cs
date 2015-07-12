@@ -23,16 +23,18 @@ namespace AGAD.Models
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<TOWN> TOWNs { get; set; }
         public DbSet<USER> USERs { get; set; }
+        public DbSet<IMAGEPATH> IMAGEPATHs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AGADMap());
+            modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new AGADTYPEMap());
             modelBuilder.Configurations.Add(new CITYMap());
-            modelBuilder.Configurations.Add(new CONFIRMSTATEMap());
-            modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new TOWNMap());
+            modelBuilder.Configurations.Add(new CONFIRMSTATEMap());
             modelBuilder.Configurations.Add(new USERMap());
+            modelBuilder.Configurations.Add(new AGADMap());
+            modelBuilder.Configurations.Add(new IMAGEPATHMap());
         }
     }
 }

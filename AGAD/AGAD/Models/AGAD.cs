@@ -5,27 +5,40 @@ namespace AGAD.Models
 {
     public partial class AGAD
     {
+
+        public AGAD()
+        {
+            this.ImagePATHS = new List<IMAGEPATH>();
+            this.STARTDATE = DateTime.Now;
+            this.ENDDATE = DateTime.Now;
+            this.CITY = 1;
+            this.TOWN = 1;
+            this.CONFIRMSTATEID = (int)CONFIRMSTATEENUM.NOTACCEPTED;
+            this.USER_TC = "12345678911";
+            
+     
+        }
+
         public int Id { get; set; }
         public int AGADTYPE { get; set; }
-        public System.DateTime STARTDATE { get; set; }
-        public System.DateTime ENDDATE { get; set; }
-        public int TIME { get; set; }
-        public int IL { get; set; }
-        public int ILCESEMT { get; set; }
-        public string KOY { get; set; }
-        public string MAHALLE { get; set; }
-        public string BELDEMEVKI { get; set; }
-        public string LATITUDE { get; set; }
-        public string LONGITUDE { get; set; }
+        public Nullable<DateTime> STARTDATE { get; set; }
+        public Nullable<DateTime> ENDDATE { get; set; }
+        public int CITY { get; set; }
+        public int TOWN { get; set; }
+        public string VILLAGE { get; set; }
+        public string DISTINCT_REGION { get; set; }
+        public string REGION { get; set; }
         public string COMMENT { get; set; }
         public string EFFECTTEDAREA { get; set; }
-        public string IMAGEPATH { get; set; }
+   
         public int CONFIRMSTATEID { get; set; }
         public string CONFIRMCOMMENT { get; set; }
-        public Nullable<int> USER_ID { get; set; }
-        public virtual AGADTYPE AGADTYPE1 { get; set; }
-        public virtual CITY CITY { get; set; }
-        public virtual CONFIRMSTATE CONFIRMSTATE { get; set; }
-        public virtual TOWN TOWN { get; set; }
+        public string USER_TC { get; set; }
+        public virtual AGADTYPE AGADTYPE_Item { get; set; }
+        public virtual CITY CITY_Item { get; set; }
+        public virtual CONFIRMSTATE CONFIRMSTATE_Item { get; set; }
+        public virtual TOWN TOWN_Item { get; set; }
+        public virtual USER USER_Item { get; set; }
+        public virtual ICollection<IMAGEPATH> ImagePATHS { get; set; }
     }
 }

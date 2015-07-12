@@ -12,21 +12,22 @@ namespace AGAD.Models.Mapping
 
             // Properties
             this.Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            this.Property(t => t.KOY)
+            this.Property(t => t.STARTDATE)
+                 .HasColumnType("datetime2")
+                 .HasPrecision(0);
+            this.Property(t => t.ENDDATE)
+                 .HasColumnType("datetime2")
+                 .HasPrecision(0);
+
+            this.Property(t => t.VILLAGE)
                 .HasMaxLength(50);
 
-            this.Property(t => t.MAHALLE)
+            this.Property(t => t.DISTINCT_REGION)
                 .HasMaxLength(50);
 
-            this.Property(t => t.BELDEMEVKI)
-                .HasMaxLength(50);
-
-            this.Property(t => t.LATITUDE)
-                .HasMaxLength(50);
-
-            this.Property(t => t.LONGITUDE)
+            this.Property(t => t.REGION)
                 .HasMaxLength(50);
 
             this.Property(t => t.COMMENT)
@@ -38,40 +39,46 @@ namespace AGAD.Models.Mapping
             this.Property(t => t.CONFIRMCOMMENT)
                 .HasMaxLength(50);
 
+            this.Property(t => t.USER_TC)
+                .HasMaxLength(11);
+
             // Table & Column Mappings
             this.ToTable("AGAD");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.AGADTYPE).HasColumnName("AGADTYPE");
             this.Property(t => t.STARTDATE).HasColumnName("STARTDATE");
             this.Property(t => t.ENDDATE).HasColumnName("ENDDATE");
-            this.Property(t => t.TIME).HasColumnName("TIME");
-            this.Property(t => t.IL).HasColumnName("IL");
-            this.Property(t => t.ILCESEMT).HasColumnName("ILCESEMT");
-            this.Property(t => t.KOY).HasColumnName("KOY");
-            this.Property(t => t.MAHALLE).HasColumnName("MAHALLE");
-            this.Property(t => t.BELDEMEVKI).HasColumnName("BELDEMEVKI");
-            this.Property(t => t.LATITUDE).HasColumnName("LATITUDE");
-            this.Property(t => t.LONGITUDE).HasColumnName("LONGITUDE");
+            this.Property(t => t.CITY).HasColumnName("CITY");
+            this.Property(t => t.TOWN).HasColumnName("TOWN");
+            this.Property(t => t.VILLAGE).HasColumnName("VILLAGE");
+            this.Property(t => t.DISTINCT_REGION).HasColumnName("DISTINCT_REGION");
+            this.Property(t => t.REGION).HasColumnName("REGION");
             this.Property(t => t.COMMENT).HasColumnName("COMMENT");
             this.Property(t => t.EFFECTTEDAREA).HasColumnName("EFFECTTEDAREA");
-            this.Property(t => t.IMAGEPATH).HasColumnName("IMAGEPATH");
             this.Property(t => t.CONFIRMSTATEID).HasColumnName("CONFIRMSTATEID");
             this.Property(t => t.CONFIRMCOMMENT).HasColumnName("CONFIRMCOMMENT");
-            this.Property(t => t.USER_ID).HasColumnName("USER_ID");
+            this.Property(t => t.USER_TC).HasColumnName("USER_TC");
 
             // Relationships
-            this.HasRequired(t => t.AGADTYPE1)
+            this.HasRequired(t => t.AGADTYPE_Item)
                 .WithMany(t => t.AGADs)
                 .HasForeignKey(d => d.AGADTYPE);
-            this.HasRequired(t => t.CITY)
+
+            this.HasRequired(t => t.CITY_Item)
                 .WithMany(t => t.AGADs)
-                .HasForeignKey(d => d.IL);
-            this.HasRequired(t => t.CONFIRMSTATE)
+                .HasForeignKey(d => d.CITY);
+
+            this.HasRequired(t => t.CONFIRMSTATE_Item)
                 .WithMany(t => t.AGADs)
                 .HasForeignKey(d => d.CONFIRMSTATEID);
-            this.HasRequired(t => t.TOWN)
+
+            this.HasRequired(t => t.TOWN_Item)
                 .WithMany(t => t.AGADs)
-                .HasForeignKey(d => d.ILCESEMT);
+                .HasForeignKey(d => d.TOWN);
+
+            this.HasRequired(t => t.USER_Item)
+                .WithMany(t => t.AGADs)
+                .HasForeignKey(d => d.USER_TC);
 
         }
     }

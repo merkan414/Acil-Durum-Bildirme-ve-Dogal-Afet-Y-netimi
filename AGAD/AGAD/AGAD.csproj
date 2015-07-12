@@ -159,7 +159,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AjaxOnlyAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomMembershipProvider.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -168,25 +170,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507111801588_cities.cs" />
-    <Compile Include="Migrations\201507111801588_cities.Designer.cs">
-      <DependentUpon>201507111801588_cities.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AGAD.cs" />
     <Compile Include="Models\agadContext.cs" />
     <Compile Include="Models\AGADTYPE.cs" />
     <Compile Include="Models\CITY.cs" />
     <Compile Include="Models\CONFIRMSTATE.cs" />
+    <Compile Include="Models\IMAGESPATH.cs" />
     <Compile Include="Models\Mapping\AGADMap.cs" />
     <Compile Include="Models\Mapping\AGADTYPEMap.cs" />
     <Compile Include="Models\Mapping\CITYMap.cs" />
     <Compile Include="Models\Mapping\CONFIRMSTATEMap.cs" />
+    <Compile Include="Models\Mapping\IMAGEPATHMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TOWNMap.cs" />
     <Compile Include="Models\Mapping\USERMap.cs" />
-    <Compile Include="Models\Seed\CitySeeder.cs" />
-    <Compile Include="Models\STATESENUM.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TOWN.cs" />
     <Compile Include="Models\USER.cs" />
@@ -200,6 +198,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\adminbg.jpg" />
     <Content Include="Content\Images\adminortakguc.gif" />
+    <Content Include="Content\Images\afadlogo.png" />
     <Content Include="Content\Images\bg1.png" />
     <Content Include="Content\Images\bg2.png" />
     <Content Include="Content\Images\img1.png" />
@@ -221,6 +220,7 @@
     <Content Include="Content\Images\ui-icons_888888_256x240.png" />
     <Content Include="Content\Images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\plupload-2.1.7\examples\custom.html" />
     <Content Include="Content\plupload-2.1.7\examples\events.html" />
     <Content Include="Content\plupload-2.1.7\examples\jquery\all_runtimes.html" />
@@ -406,11 +406,6 @@
     <Content Include="Views\ADMIN\_login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507111801588_cities.resx">
-      <DependentUpon>201507111801588_cities.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -419,6 +414,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

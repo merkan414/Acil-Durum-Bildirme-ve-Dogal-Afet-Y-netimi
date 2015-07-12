@@ -1,5 +1,13 @@
-﻿body {
-        background-image: url(Images/adminbg.jpg);
-      background-repeat: no-repeat;
-      background-color: #f0f0f0;
+﻿body{
+    background-color: rgba(116, 138, 221, 0.4);
+}
+.navbar-default{
+    background-color:transparent;
+    border:none;
+}
+.adminNavBar{
+      box-shadow: 0 0 15px 1px rgba(59, 69, 107, 0.4);
+  margin-top: 2%;
+  padding: 1%;
+  background-color: white;
 }

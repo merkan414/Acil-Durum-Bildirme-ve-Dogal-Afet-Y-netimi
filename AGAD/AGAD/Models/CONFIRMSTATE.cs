@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace AGAD.Models
 {
+    enum CONFIRMSTATEENUM
+    {
+        NOTACCEPTED,
+        PROCESSING,
+        ACCEPTED,
+        CANCELLED
+    }
     public partial class CONFIRMSTATE
     {
         public CONFIRMSTATE()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace AGAD.Models
 {
+    [Serializable]
     public partial class AGADTYPE
     {
         public AGADTYPE()

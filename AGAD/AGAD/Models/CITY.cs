@@ -10,7 +10,7 @@ namespace AGAD.Models
             this.AGADs = new List<AGAD>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string NAME { get; set; }
         public virtual ICollection<AGAD> AGADs { get; set; }
     }

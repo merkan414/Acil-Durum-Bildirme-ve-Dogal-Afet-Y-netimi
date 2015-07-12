@@ -31,6 +31,21 @@ namespace AGAD
                 );
 
             routes.MapRoute(
+                "getList",
+                "getList",
+                new { controller = "AGAD", action = "getList" }
+                );
+            routes.MapRoute(
+                "saveImage",
+                "saveImage",
+                new { controller = "AGAD", action = "saveImage" }
+                );
+            routes.MapRoute(
+                "save",
+                "save",
+                new { controller = "AGAD", action = "saveAgad" }
+                );
+            routes.MapRoute(
                 name: "Default",
                 url: "",
                 defaults: new { controller = "AGAD", action = "Index", id = UrlParameter.Optional }

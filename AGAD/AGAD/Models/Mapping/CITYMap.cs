@@ -8,10 +8,10 @@ namespace AGAD.Models.Mapping
         public CITYMap()
         {
             // Primary Key
-            this.HasKey(t => t.ID);
+            this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.ID)
+            this.Property(t => t.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             this.Property(t => t.NAME)
@@ -20,7 +20,7 @@ namespace AGAD.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("CITY");
-            this.Property(t => t.ID).HasColumnName("ID");
+            this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.NAME).HasColumnName("NAME");
         }
     }
