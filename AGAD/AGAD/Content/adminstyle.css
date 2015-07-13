@@ -86,3 +86,12 @@
   font-size: 34px;
   color: rgb(226, 15, 15);
 }
+.detailPageTextHeader{
+      font-family: fantasy;
+  font-size: 22px;
+  color: rgb(38, 72, 94);
+}
+.detailPageTextContent{
+  font-family: cursive;
+  font-size: 22px;
+}
