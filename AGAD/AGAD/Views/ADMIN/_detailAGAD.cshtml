@@ -1,0 +1,189 @@
+﻿@model AGAD.Models.AGAD
+@{
+    ViewBag.Title = "_detailAGAD";
+    Layout = "~/Views/Shared/_AdminLayoutTemplate.cshtml";
+}
+<div class="row" style="text-align:center;padding:2%">
+    
+        
+            <div class="btn-group" role="group" aria-label="...">
+                @foreach (var item in ViewBag.confirmState as List<AGAD.Models.CONFIRMSTATE>)
+                {
+
+                    if (item.Id == Model.CONFIRMSTATEID)
+                    {
+                        <button type="button" class="confirmState btn btn-info active" value="@Html.Raw(item.Id)" >@Html.Raw(item.NAME)</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="confirmState btn btn-info" value="@Html.Raw(item.Id)">@Html.Raw(item.NAME)</button>
+                    }
+
+                }
+            </div>       
+ 
+</div>
+
+<div class="row">
+    <div class="col-xs-4">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                @{
+                    var imageList = Model.ImagePATHS;
+                    if(imageList==null || imageList.Count<1)
+                    {
+                        imageList = new List<AGAD.Models.IMAGEPATH>();
+                        imageList.Add(new AGAD.Models.IMAGEPATH
+                        {
+                            PATH = "~/Content/Images/afadlogo1.png",
+                            Id=0,
+                            AGAD_ID=0
+                        });
+                    }
+                }
+                @for (int i = 0; i < imageList.Count; i++)
+                {
+                    
+                    if(i==0)
+                    {
+                        
+                        <div class="item active">
+                            <img style="width:100%;min-height:225px" src="@Url.Content(imageList.ElementAt(i).PATH.ToString())" alt="...">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="item">
+                            <img style="width:100%;min-height:225px"  src="@Url.Content(imageList.ElementAt(i).PATH.ToString())" alt="...">
+                        </div>
+                    }                
+                }
+                
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div class="panel panel-default">
+            <div class="page-header" style="text-align:center">
+                <span class="detailPanelHeader">@Html.Raw(Model.AGADTYPE_Item.NAME.ToString())</span> 
+            </div>
+            <div class="panel-body">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span>Başlangıç Saati : </span>
+                            <span>@Html.Raw(Model.STARTDATE.Value.ToShortDateString())</span>
+                        </div>
+                        <div class="col-xs-6">
+                            <span>Bitiş Saati : </span>
+                            <span>@Html.Raw(Model.ENDDATE.Value.ToShortDateString())</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>Etkilenen Bölgeler : </span>
+                            <span>@Html.Raw((Model.EFFECTTEDAREA != null) ? Model.EFFECTTEDAREA.ToString() : "-")</span>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>Açıklama : </span>
+                            <span>@Html.Raw((Model.COMMENT != null) ? Model.COMMENT.ToString() : "-")</span>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>Onaylama Açıklaması : </span>
+                            <span>@Html.Raw((Model.CONFIRMCOMMENT != null) ? Model.CONFIRMCOMMENT.ToString() : "-")</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span>Belde Mevki : </span>
+                            <span>@Html.Raw((Model.REGION!=null)?Model.REGION.ToString():"-")</span>
+                        </div>
+                        <div class="col-xs-6">
+                            <span>Mahalle : </span>
+                            <span>@Html.Raw((Model.DISTINCT_REGION!=null) ? Model.DISTINCT_REGION.ToString() : "-")</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span>Köy : </span>
+                            <span>@Html.Raw((Model.VILLAGE!=null) ? Model.VILLAGE.ToString() : "-")</span>
+                        </div>
+                        <div class="col-xs-6">
+                            <span>İlçe - Semt : </span>
+                            <span>@Html.Raw(Model.TOWN_Item.NAME.ToString())</span>
+                        </div>
+                    </div>
+                    <h3 style="text-align:center">@Html.Raw(Model.CITY_Item.NAME.ToString())</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/changeState" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Durum Değiştirme</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align:center">@Html.Raw(Model.Id) nolu detayın durumunu <span id="modalText"></span> değiştirmek istiyomusunuz ?</p>
+                    <div class="row">
+                        <div class="col-md-12 input-group">
+                            <textarea class="form-control" name="confirmComment" placeholder="Yorumunuzu Yazınız" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" id="confirmState" name="confirmState" value="1" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+                    <button type="submit" class="btn btn-primary" name="detailID" value="@Html.Raw(Model.Id)">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.confirmState').on('click', function (e) {
+            var des = $(e.target).parent().children('.active');
+            var so = $(e.target);
+            if(des.val()==so.val())
+            {
+                
+                return;
+            }
+            $('#confirmState').val(so.val());
+            $('#modalText').html(des.html() + " durumundan " + so.html() + " durumuna ");
+            $('#myModal').modal('show');
+        })
+    });
+</script>

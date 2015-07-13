@@ -1,0 +1,83 @@
+﻿ <!---start-clients----->
+@{
+    var list = ViewBag.lastAgadList as List<AGAD.Models.AGAD>;
+    
+}
+<div class="clients" id="clients">
+
+
+    @if (list.Count > 0)
+    {
+        <div class="wrap">
+            <div class="client-head">
+                <h3>Doğal Afetler ve  <span>Acil Durumlar</span></h3>
+                <p>En son onaylanan acil durumlar ve dogal afetler</p>
+            </div>
+            <div class="grids-1">
+                <div class="clients_main">
+                    <div class="client-left">
+                        <img src="@Url.Content("~/Content/Images/client1.jpg")" alt="" />
+                    </div>
+                    <div class="client-right">
+                        <div class="grid_info">
+                            <p>@Html.Raw(list[0].AGADTYPE_Item.NAME)</p>
+                            <p>
+                                @if (!list[0].REGION.IsEmpty())
+                                {
+                                    @Html.Raw(list[0].REGION + " beldesi")
+                                }
+                                @if (!list[0].VILLAGE.IsEmpty())
+                                {
+                                    @Html.Raw(list[0].VILLAGE+" köyü")
+                                }
+                                @if (!list[0].DISTINCT_REGION.IsEmpty())
+                                {
+                                    @Html.Raw(list[0].DISTINCT_REGION + " mahallesi")
+                                }
+                                @if (list[0].TOWN_Item!= null)
+                                {
+                                    @Html.Raw(list[0].TOWN_Item.NAME + " -")
+                                }
+                                @if (list[0].CITY_Item != null)
+                                {
+                                    @Html.Raw(list[0].CITY_Item.NAME)
+                                }
+
+                            </p>
+                            <h4>
+                               
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="clients_main1">
+                    <div class="client-right">
+                        <div class="grid_info1">
+                            <p>'' Proin iaculis purus Consequent sem cure digni ssim.Donec pottitora entum suscipit aenem rhoncus ''</p>
+                            <h4><a href="#">- Bart Thompson</a>,Founder Rainel</h4>
+                        </div>
+                    </div>
+                    <div class="client-left1">
+                        <img src="@Url.Content("~/Content/Images/client2.jpg")" alt="" />
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="client-head" style="padding-bottom:30%">
+            <img src="@Url.Content("~/Content/Images/afadlogo.png")" />
+            <h3 style=" text-align: center; font-size: 1.8em; font-weight: 900; color: rgb(111, 59, 28);"><span>Afet veya Acil Durum Bulunamamıştır.</span></h3>
+         </div>
+        
+    }
+</div>
+
+
+
+
+<!---//end-clients----->
