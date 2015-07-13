@@ -1,0 +1,84 @@
+﻿@model List<AGAD.Models.AGAD>
+@{
+    ViewBag.Title = "Acil Durum Listesi";
+    Layout = "~/Views/Shared/_AdminLayoutTemplate.cshtml";
+}
+
+<div class="row">
+   
+    <ul class="listItemContainer">
+        @foreach (var item in Model)
+{
+    <li class="listItemConinerItem">
+        <form class="row itemForm" action="/admin/detay/@Html.Raw(item.Id)" method="post">
+            @Html.AntiForgeryToken()
+    <div class="col-xs-3" style="padding-top:2%">
+        <img class="img-circle" src="@Url.Content("~/Content/Images/afadlogo1.png")" />
+    </div>
+    <div class="col-xs-9 listIteTextContainer">
+        <div class="row listIteTextHeader">
+            @Html.Raw(item.AGADTYPE_Item.NAME.ToString())
+            <span>(@Html.Raw(String.Format("{0:MM/dd/yyyy}", item.STARTDATE)) - @Html.Raw(String.Format("{0:MM/dd/yyyy}", item.ENDDATE)))</span>
+        </div>
+        <div class="listIteTextFooter">
+            <div class="listItemTextFooterAdress">
+                @Html.Raw(item.TOWN_Item.NAME.ToString() + " " + item.CITY_Item.NAME.ToString())
+            </div>
+            <div class="listItemTextFooterConfirm">
+                @Html.Raw(item.CONFIRMSTATE_Item.NAME.ToString())
+            </div>
+        </div>
+    </div>
+    </form>
+    </li>
+}
+    </ul>   
+</div>
+@if(ViewBag.countAGAD>1)
+{
+    <div class="row" style="text-align:center">
+    <nav>
+        <ul class="pagination">
+            <li>
+                @if(ViewBag.pagination>1)
+                {
+                    <a href="/admin/@Html.Raw(ViewBag.pagination-1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                }
+                
+            </li>
+            @for(int i=1;i<=ViewBag.countAGAD;i++)
+            {
+                if (i == ViewBag.pagination)
+                {
+                    <li><a class="active" href="/admin/@Html.Raw(i)">@Html.Raw(i) <span class="sr-only">(current)</span></a></li>
+                }
+                else
+                {
+                    <li><a href="/admin/@Html.Raw(i)">@Html.Raw(i)</a></li>
+                }
+                    
+                
+            }
+            @if (ViewBag.pagination < ViewBag.countAGAD)
+            {
+                <li>
+                    <a href="/admin/@Html.Raw(ViewBag.pagination+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+            
+        </ul>
+    </nav>
+</div>
+}
+
+<script>
+    $(function () {
+        $('.itemForm').on('click', function (e) {
+            $(this).submit();
+        });
+    });
+</script>

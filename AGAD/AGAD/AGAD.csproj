@@ -196,16 +196,17 @@
     <Content Include="Content\adminstyle.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\adminbg.jpg" />
-    <Content Include="Content\Images\adminortakguc.gif" />
     <Content Include="Content\Images\afadlogo.png" />
-    <Content Include="Content\Images\bg1.png" />
+    <Content Include="Content\Images\afadlogo1.ico" />
+    <Content Include="Content\Images\afadlogo1.png" />
+    <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\bg2.png" />
     <Content Include="Content\Images\img1.png" />
     <Content Include="Content\Images\img2.png" />
     <Content Include="Content\Images\img3.png" />
     <Content Include="Content\Images\img4.png" />
     <Content Include="Content\Images\img5.png" />
+    <Content Include="Content\Images\person.png" />
     <Content Include="Content\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\Images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -301,12 +302,28 @@
     <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style404.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Content\uploads\2014121216412-sozluk.jpg" />
+    <Content Include="Content\uploads\220px-Graph_cycle.gif" />
+    <Content Include="Content\uploads\9495230_orig.jpg" />
+    <Content Include="Content\uploads\adminbg.jpg" />
+    <Content Include="Content\uploads\AfeteHazirAile.png" />
+    <Content Include="Content\uploads\AfeteHazirIsyeri.png" />
+    <Content Include="Content\uploads\AfeteHazirOkul.png" />
+    <Content Include="Content\uploads\bg1.png" />
+    <Content Include="Content\uploads\bgadmin.jpg" />
+    <Content Include="Content\uploads\DCmotor_wReverse.png" />
+    <Content Include="Content\uploads\GL_GeometricPrimitives.png" />
+    <Content Include="Content\uploads\H-Bridge-Circuit-Diagram.png" />
+    <Content Include="Content\uploads\IDEView.png" />
+    <Content Include="Content\uploads\JOHaB2vy_400x400.jpg" />
+    <Content Include="Content\uploads\mrkn.png" />
+    <Content Include="Content\uploads\mrkngray.png" />
+    <Content Include="Content\uploads\person.png" />
+    <Content Include="Content\uploads\tansformerl-ess-poer-supply-circuit.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Images\arrow_up.png" />
-    <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\c1.png" />
     <Content Include="Content\Images\c2.png" />
     <Content Include="Content\Images\c3.png" />
@@ -324,8 +341,6 @@
     <Content Include="Content\Images\icons.png" />
     <Content Include="Content\Images\img-left.png" />
     <Content Include="Content\Images\img-right.png" />
-    <Content Include="Content\Images\logo.jpg" />
-    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\menu-icon.png" />
     <Content Include="Content\Images\mobile-icoon1.png" />
     <Content Include="Content\Images\nav-icon.png" />
@@ -387,15 +402,14 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\AGAD\Index.cshtml" />
     <Content Include="Views\Shared\error.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutTemplate.cshtml" />
-    <Content Include="Views\ADMIN\getList.cshtml" />
+    <Content Include="Views\ADMIN\_getList.cshtml" />
     <Content Include="Views\ADMIN\_detailAGAD.cshtml" />
-    <Content Include="Views\AGAD\_bildirim.cshtml" />
+    <Content Include="Views\AGAD\_info.cshtml" />
     <Content Include="Views\AGAD\_mainImage.cshtml" />
     <Content Include="Views\AGAD\_disasterList.cshtml" />
     <Content Include="Views\AGAD\_authorityPersonals.cshtml" />
@@ -404,6 +418,7 @@
     <Content Include="Views\ADMIN\_header.cshtml" />
     <Content Include="Views\ADMIN\_footer.cshtml" />
     <Content Include="Views\ADMIN\_login.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -415,9 +430,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\uploads\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

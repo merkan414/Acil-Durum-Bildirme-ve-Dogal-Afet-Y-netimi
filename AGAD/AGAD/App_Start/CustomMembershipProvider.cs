@@ -29,9 +29,9 @@ namespace AGAD.App_Start
                  MD5 md5Hasher = MD5.Create();
                // password=CalculateMD5Hash(password);
                 var user = db.USERs.Where(u => u.EMAIL == username && u.PASS == password).FirstOrDefault();
-                FormsAuthentication.SetAuthCookie(username, false);
                 if(user!=null)
                 {
+                    FormsAuthentication.SetAuthCookie(user.TC, false);
                     return true;
                 }
                 return false;

@@ -15,6 +15,9 @@ namespace AGAD.Models
             this.TOWN = 1;
             this.CONFIRMSTATEID = (int)CONFIRMSTATEENUM.NOTACCEPTED;
             this.USER_TC = "12345678911";
+            this.VILLAGE = "-";
+            this.REGION = "-";
+            this.DISTINCT_REGION = "-";
             
      
         }

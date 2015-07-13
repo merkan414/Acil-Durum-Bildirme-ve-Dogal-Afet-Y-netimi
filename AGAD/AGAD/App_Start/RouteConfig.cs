@@ -12,11 +12,22 @@ namespace AGAD
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                "AdminChangeState",
+                "changeState",
+                new { controller = "ADMIN", action = "changeState" }
+                );
 
             routes.MapRoute(
                 "AdminLogin",
                 "admin",
                 new { controller = "ADMIN", action = "Index" }
+                );
+
+            routes.MapRoute(
+                "AdminLogout",
+                "logout",
+                new { controller = "ADMIN", action = "logOut" }
                 );
 
             routes.MapRoute(
@@ -27,7 +38,7 @@ namespace AGAD
             routes.MapRoute(
                 "AdminDetail",
                 "admin/detay/{detailPage}",
-                new { controller = "ADMIN", action = "getDetailAGAD", detailPage = 0 }
+                new { controller = "ADMIN", action = "getDetailAGAD", detailPage = "^[0-9]+$" }
                 );
 
             routes.MapRoute(

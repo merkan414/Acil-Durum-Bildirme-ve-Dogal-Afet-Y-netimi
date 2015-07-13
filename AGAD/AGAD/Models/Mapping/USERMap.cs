@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 
 namespace AGAD.Models.Mapping
@@ -25,7 +26,8 @@ namespace AGAD.Models.Mapping
                 .HasMaxLength(50);
 
             this.Property(t => t.EMAIL)
-                .HasMaxLength(50);
+                .HasMaxLength(50)
+                .HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));
 
             this.Property(t => t.PASS)
                 .IsRequired();
