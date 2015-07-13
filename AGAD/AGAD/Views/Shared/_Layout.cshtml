@@ -8,19 +8,20 @@
     <meta name="keywords" content="doğal afet acil durum bilgilendirme" />
     <meta name="author" content="murat erkan" />
     <link rel="icon" type="image/ico" href="@Url.Content("~/Content/Images/afadlogo1.ico")" />
+    <!-- include css -->
     @Styles.Render("~/Content/css")
-
     <!--web-fonts -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!--web-fonts -->
+    <!-- include jquery-->
     @Scripts.Render("~/Scripts/jquery.min.js")
     @Scripts.Render("~/Scripts/jquery.easing.1.3.js")
 </head>
 <body>
 
-    @Html.Partial("~/Views/AGAD/_mainImage.cshtml")
+    
     @RenderBody()
 
     <!-- scroll_top_btn -->

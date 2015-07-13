@@ -8,7 +8,8 @@
             <li>Adres Bilgisi</li>
             <li>Resimler</li>
         </ul>
-        <!-- fieldsets -->
+        <!-- forms -->
+        <!-- general info form-->
          <form id="generalInfo">
              @Html.AntiForgeryToken()
             <h2 class="fs-title">GENEL BİLGİ</h2>
@@ -30,7 +31,8 @@
                  <textarea name="COMMENT" placeholder="Açıklama" rows="4"></textarea>
                  <input type="button" name="next" class="next action-button" value="İleri" />
         </form>
-            
+        <!-- general info form-->
+        <!-- address info form--> 
         <form id="adressInfo">
             @Html.AntiForgeryToken()
             <h2 class="fs-title">Adres Bilgisi</h2>
@@ -65,9 +67,9 @@
                 <input type="button" name="next" class="next action-button" value="İleri" />
             </div>
         </form>
-            
+        <!-- address info form--> 
+        <!-- image upload form-->    
         <form id="imageInfo">
-            
             <h2 class="fs-title">Doğal Afet ve Acil Durum Resimleri</h2>
             <div id="uploader">
                 @Html.AntiForgeryToken()
@@ -76,249 +78,24 @@
             <input type="button" name="previous" class="previous action-button" value="Geri" />
             <input type="button" name="submit" class="submit action-button" value="Kaydet" />
         </form>
+        <!-- image upload form--> 
+        <!-- post succes form-->
         <form id="success" style="padding:15%">
             <img src="@Url.Content("~/Content/Images/afadlogo.png")" />
             <h3 style="text-align: center; font-size: 1.8em; color: green;">Talebiniz İncelemeye Alınmıştır.</h3>
             <h3 style="text-align:center">Verdiğiniz Bilgilerden Dolayı Teşekür Ederiz</h3>
         </form>
+        <!-- post succes form-->
+        <!-- post failed form-->
         <form id="failed" style="padding:15%">
             <img src="@Url.Content("~/Content/Images/afadlogo.png")" />
             <h3 style="text-align: center; font-size: 1.8em; color: red;">Hata Oluştu Tekrar Deneyiniz.</h3>
             <h3 style="text-align:center">3 saniye sonra sayfa yenilenecektir.</h3>
         </form>
+        <!-- post failed form-->
     </div>
-    <script>
-        $(function () {
-            $.datepicker.regional['tr'] = {
-                closeText: 'kapat',
-                prevText: '&#x3c;geri',
-                nextText: 'ileri&#x3e',
-                currentText: 'bugün',
-                monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
-                'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
-                monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
-                    'Tem','Ağu','Eyl','Eki','Kas','Ara'],
-                dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
-                dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
-                dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
-                weekHeader: 'Hf',
-                dateFormat: 'dd.mm.yy',
-                firstDay: 1,
-                isRTL: false,
-                showMonthAfterYear: false,
-                yearSuffix: ''};
-            $.datepicker.setDefaults($.datepicker.regional['tr']);
-            $("#endDate").datepicker({ dateFormat: 'dd MM yy', minDate: 0 }, "gotoCurrent", true);
-            $("#endDate").val($.datepicker.formatDate('dd MM yy', new Date()))
-            $("#uploader").plupload({
-                // General settings
-                runtimes : 'html5,flash,silverlight,html4',
-                url: "/saveImage",
- 
-                multipart_params: {
-                   "__RequestVerificationToken": $('#imageInfo [name=__RequestVerificationToken]').val()
-                },
-                // Maximum file size
-                max_file_size : '2mb',
- 
-                chunk_size: '1mb',
- 
-                // Resize images on clientside if we can
-                resize : {
-                    width : 200,
-                    height : 200,
-                    quality : 90,
-                    crop: true // crop to exact dimensions
-                },
- 
-                // Specify what files to browse for
-                filters : [
-                    {title : "Image files", extensions : "jpg,gif,png"},
-                ],
- 
-                // Rename files by clicking on their titles
-                rename: true,
-         
-                // Sort files
-                sortable: true,
- 
-                // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
-                dragdrop: true,
- 
-                // Views to activate
-                views: {
-                    list: true,
-                    thumbs: true, // Show thumbs
-                    active: 'thumbs'
-                },
- 
-                // Flash settings
-                flash_swf_url : '@Url.Content("~/Content/plupload-2.1.7/js/Moxie.swf")',
-     
-                // Silverlight settings
-                silverlight_xap_url : '@Url.Content("~/Content/plupload-2.1.7/js/Moxie.axp")'
-            });
-            $.validator.addMethod("valueNotEquals", function (value, element, arg) {
-                return arg != value;
-            }, "");
-            $("#generalInfo").validate({
-                rules: {
-                    AGADTYPE: {
-                        valueNotEquals: "0"
-                    }
-                },
-                messages: {
-                    AGADTYPE: {
-                        valueNotEquals: "Doğal Afet Çeşidi ve Acil Durum Seçeneğini Seçiniz"
-                    }
-                }
-
-            });
-            $("#adressInfo").validate({
-                rules: {
-                    
-                    CITY: {
-                        valueNotEquals: "0"
-                    },
-                    TOWN: {
-                        valueNotEquals: "0"
-                    },
-                    VILLAGE: {
-                        required: true,
-                        minlength: 3
-                    },
-                    DISTINCT_REGION: {
-                        required: true,
-                        minlength: 3
-                    }
-                },
-                messages: {
-                   
-                    CITY: {
-                        valueNotEquals: "Şehir Şeçiniz"
-                    },
-                    TOWN: {
-                        valueNotEquals: "Semt veya İlçe Seçiniz"
-                    },
-                    VILLAGE: {
-                        required: "Köy veya Kasaba İsmini Giriniz",
-                        minlength: "En Az 3 Karakter Giriniz"
-                    },
-                    DISTINCT_REGION: {
-                        required: "Mahalle İsmini Giriniz",
-                        minlength: "En Az 3 Karakter Giriniz"
-                    }
-                }
-
-            });
-
-
-            $('.next').on('click', function () {
-                var item = $('#msform').children('form:visible');
-                var index = $('#msform > form').index(item);
-                if (index == 0 && $("#generalInfo").valid() == false)
-                {
-                    return;
-                }
-                else if (index == 1 && $("#adressInfo").valid() == false)
-                {
-                    return;
-                }
-                index++;
-                item.slideToggle("slow");
-                $($('#msform').children('form')[index]).show();
-                $($('#progressbar').children()[index]).addClass("active");
-                $('html,body').animate({ scrollTop: $('#services').offset().top }, 'slow');
-                
-            });
-            $('.previous').on('click', function () {
-                var item = $('#msform').children('form:visible');
-                var index = $('#msform > form').index(item);
-                index--;
-                
-                item.slideUp("slow");
-                $($('#msform').children('form')[index]).show();
-                $($('#progressbar').children()[index+1]).removeClass("active");
-                $('html,body').animate({ scrollTop: $('#services').offset().top }, 'slow');
-            });
-            $('.submit').on('click', function () {
-                if ($("#generalInfo").valid() && $("#adressInfo").valid())
-                {
-                    var data = $('#generalInfo, #adressInfo,  #imageInfo').serialize();
-                    debugger;
-                    var token = $('#generalInfo [name=__RequestVerificationToken]').val();
- 
-                    data["__RequestVerificationToken"] = token;
-             
- 
-                    post("/save", data, function (data) {
-                        debugger;
-                        var item = $('#msform').children('form:visible');
-                        var index = $('#msform > form').index(item);
-                        item.slideToggle("slow");
-                        if (data.success)
-                        {
-                            $('#success').show();
-                        }
-                        else
-                        {
-                            $('#failed').show();
-                        }
-
-                        
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 3000);
-                        
-                    }, function () {
-                        var item = $('#msform').children('form:visible');
-                        var index = $('#msform > form').index(item);
-                        item.slideToggle("slow");
-                        $('#failed').show();
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 3000);
-                    });
-                }
-            });
-            $('#CITY').change(function () {
-       
-                var token = $('#adressInfo [name=__RequestVerificationToken]').val();
-                var data = {};
-                data["__RequestVerificationToken"] = token;
-                data["cityID"] = $('#CITY').val();
-                post("/getList", data, function (data) {
-                    if ($.isArray(data)) {
-
-                        $('#TOWN').empty();
-                        $.each(data, function (i, value) {
-                            $('#TOWN').append("<option value='" + value.Id + "'>" + value.NAME + "</option>");
-                        });
-                    }
-                }, function () {
-                    var item = $('#msform').children('form:visible');
-                    var index = $('#msform > form').index(item);
-                    item.slideToggle("slow");
-                    $('#failed').show();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 3000);
-                });
-                
-            });
-
-            function post(url, data, succes, failed) {
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    cache: true,
-                    data: data,
-                    success: succes,
-                    error: failed
-                });
-            }
-        });
-    </script>
+    <!-- validation and button script-->
+    @Scripts.Render("~/Scripts/mainNotificationPage.js")
   
 </div>
 <!---//end-services----->

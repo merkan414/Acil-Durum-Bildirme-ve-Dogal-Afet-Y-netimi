@@ -1,10 +1,7 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,19 +10,23 @@
     <meta name="keywords" content="doğal afet acil durum bilgilendirme" />
     <meta name="author" content="murat erkan" />
     <link rel="icon" type="image/ico" href="@Url.Content("~/Content/Images/afadlogo1.ico")" />
+    <!-- include css -->
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/adminstyle.css")
+    <!-- include css -->
+    <!-- include javascript -->
     @Scripts.Render("~/Scripts/jquery.min.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
-    
+    <!-- include javascript -->
 </head>
-<body >
+<body>
+    <!-- admin page header-->
     @Html.Partial("~/Views/ADMIN/_header.cshtml")
-    <div class="container"> 
-               @RenderBody()
-        
+    <!-- admin page header-->
+    <!-- admin page body-->
+    <div class="container">
+        @RenderBody()
     </div>
-  
-   
+    <!-- admin page body-->
 </body>
 </html>
